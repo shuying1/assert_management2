@@ -10,6 +10,7 @@
         html,
         body {
             height: 100%;
+            width: 100%;
             margin: 0;
             padding: 0;
             font-family: 'Microsoft YaHei', Arial, sans-serif;
@@ -121,7 +122,7 @@
             padding: 16px 22px;
             border: none;
             border-radius: 10px;
-           background: linear-gradient(135deg, #e6f0ff 0%, #d1e3ff 100%);
+            background: linear-gradient(135deg, #e6f0ff 0%, #d1e3ff 100%);
             color: #2575fc;
             font-size: 18px;
             font-weight: bold;
@@ -285,6 +286,13 @@
 
         .nav-btn.has-submenu.active::after {
             transform: rotate(180deg);
+        }
+        
+        /* 桌面设备悬停时箭头向上 */
+        @media (hover: hover) and (pointer: fine) {
+            .submenu-container:hover .nav-btn.has-submenu::after {
+                transform: rotate(180deg); /* 悬浮时箭头向上 */
+            }
         }
 
         /* 移动设备指示器 */
