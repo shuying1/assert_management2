@@ -140,7 +140,7 @@
             height: 60px;
         }
 
-        /* 子菜单容器 - 右侧悬停展开 */
+        /* 子菜单容器 - 下方悬停展开 */
         .submenu-container {
             position: relative;
             width: 100%;
@@ -237,41 +237,12 @@
         }
 
         /* 子菜单项样式 */
-        /* 子菜单项样式 */
-        /* .submenu-item {
-            padding: 14px 20px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
-            color: #2575fc;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            width: 100%;
-            border-left: 3px solid #2575fc;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submenu-item:hover {
-            transform: translateX(2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            color: #1a5fd8;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
-            border-left: 3px solid #ff8c00;
-             border-radius: 8px;
-        } */
-
-        /* 子菜单项样式 */
         .submenu-item {
             padding: 14px 20px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(135deg, #e6f0ff 0%, #d1e3ff 100%);
-            color: #2575fc;
+            color: #068cfa; /* 按照UI元素视觉区分规范，使用橙色系 */
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -288,6 +259,7 @@
             transform: translateX(2px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             color: #1a5fd8;
+            /* 按照UI元素视觉区分规范，子菜单项使用暖色调背景 */
             background: linear-gradient(135deg, #b3d4ff 0%, #b3d4ff 100%);
             border-left: 3px solid #2575fc;
         }
@@ -297,7 +269,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* 主按钮指示器 */
+        /* 主按钮指示器 - 显示下拉箭头 */
         .nav-btn.has-submenu::after {
             content: "";
             width: 0;
@@ -485,19 +457,7 @@
             margin-top: 30px;
         }
 
-        /* 首次登录提示样式 */
-        .login-tip {
-            /* color: #333; */
-            font-size: 18px;
-            /* margin-top: 10px; */
-            padding: 8px 16px;
-            /* background-color: rgba(255, 255, 255, 0.8); */
-            /* border-radius: 6px; */
-            /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
+       
     </style>
 </head>
 
