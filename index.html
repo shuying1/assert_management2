@@ -222,6 +222,23 @@
                     transform: translateY(0);
                 }
             }
+            
+            /* 移动设备上激活子菜单时隐藏其他按钮，但保持布局稳定 */
+            .nav-buttons.submenu-active > .nav-btn:nth-child(n+2) {
+                visibility: hidden;
+                opacity: 0;
+                height: 0;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none;
+                position: absolute;
+                left: -9999px; /* 将元素移出可视区域 */
+            }
+            
+            /* 移动设备上激活子菜单时主按钮样式 */
+            .submenu-container.active .nav-btn {
+                border-radius: 10px 10px 0 0; /* 顶部圆角，底部方形以连接子菜单 */
+            }
         }
 
         /* 子菜单项样式 */
@@ -306,7 +323,7 @@
         /* 移动设备指示器 */
         @media (max-width: 768px) {
             .nav-btn.has-submenu::after {
-                content: "↓";
+                content: "";
                 right: 15px;
             }
 
@@ -506,8 +523,10 @@
     <div class="container">
         <header>
             <div class="logo-title-container">
-                <img class="logo" src="./images/logo.png" alt="系统Logo" /> 
-               
+                <img class="logo" src="./images/logo.png" alt="系统Logo" />
+                <!-- <img class="logo"
+                    src="https://cdn.nlark.com/yuque/0/2026/png/12676018/1767599316566-15aefeeb-f8ef-4007-9f22-deb05ac7fea3.png"
+                    alt="系统Logo" /> -->
                 <h1>海螺水泥闲置资产协同管理平台</h1>
             </div>
         </header>
@@ -610,21 +629,36 @@
         if (isMobile) {
             mainBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
+                const navButtons = document.querySelector('.nav-buttons');
                 submenuContainer.classList.toggle('active');
+                
+                // 如果子菜单被激活，则给父容器添加类
+                if (submenuContainer.classList.contains('active')) {
+                    navButtons.classList.add('submenu-active');
+                } else {
+                    navButtons.classList.remove('submenu-active');
+                }
             });
 
             // 点击页面其他地方时关闭子菜单
-            document.addEventListener('click', function (e) {
-                if (!submenuContainer.contains(e.target)) {
-                    submenuContainer.classList.remove('active');
+            document.addEventListener('touchstart', function (e) {
+                if (!submenuContainer.contains(e.target) && !mainBtn.contains(e.target)) {
+                    const activeElements = document.querySelector('.nav-buttons.submenu-active');
+                    if (activeElements) {
+                        submenuContainer.classList.remove('active');
+                        activeElements.classList.remove('submenu-active');
+                    }
                 }
             });
 
             // 点击子菜单项时关闭子菜单
             const submenuItems = document.querySelectorAll('.submenu-item');
             submenuItems.forEach(item => {
-                item.addEventListener('click', function () {
+                item.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     submenuContainer.classList.remove('active');
+                    const navButtons = document.querySelector('.nav-buttons');
+                    navButtons.classList.remove('submenu-active');
                 });
             });
         }
