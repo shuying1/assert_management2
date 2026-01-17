@@ -225,14 +225,9 @@
             
             /* 移动设备上激活子菜单时隐藏其他按钮，但保持布局稳定 */
             .nav-buttons.submenu-active > .nav-btn:nth-child(n+2) {
-                visibility: hidden;
                 opacity: 0;
-                height: 0;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: none;
-                position: absolute;
-                left: -9999px; /* 将元素移出可视区域 */
+                visibility: hidden;
+                pointer-events: none; /* 防止交互 */
             }
             
             /* 移动设备上激活子菜单时主按钮样式 */
